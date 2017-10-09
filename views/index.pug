@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  .container
+    .row
+      .page-header
+        h1 Chat node js
+    #nickController.row.input-group
+      .row
+        input#nickName.form-control(type='text', placeholder="ingresa usuario")
+        span.input-group-btn
+          button#setNick.btn.btn-primary(type='submint') Ingresar
+    #loginError.alert.alert-danger.alert-dismissible.fade.show(role='alert')
+      button.close(type='button', data-dismiss='alert', aria-label='Close')
+        span(aria-hidden='true') ×
+      strong Error!
+        |  Usuario ya registrado.
+    #loginBlank.alert.alert-danger.alert-dismissible.fade.show(role='alert')
+      button.close(type='button', data-dismiss='alert', aria-label='Close')
+        span(aria-hidden='true') ×
+      strong Error!
+        |  No se puede dejar en blanco el usuario.
+    #content.row
+      .row
+        #chatContent.col-md-6
+          .card.text-white.bg-success
+            .card-header
+              | CHAT
+            #chat.card-body.bg-light.text-dark
+            #card-footer.bg-light
+              
+              form#sendMessage.input-group
+                input#message.form-control
+                
+                button.btn.btn-primary(type='submit') enviar
+        .col-md-2
+          .card.text-white.bg-primary.mb-3
+            .card-header
+              | Usuarios
+            #users.card-body.bg-light.text-dark
+          ul#updates
+block script
+  script(src="/socket.io/socket.io.js")
+  script(src="/javascripts/chat.js")
