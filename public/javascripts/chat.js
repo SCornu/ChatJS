@@ -63,7 +63,7 @@ $( document ).ready(function() {
             socket.emit("typing", true);
           } else {
             clearTimeout(timeout);
-            timeout = setTimeout(timeoutFunction, 5000);
+            timeout = setTimeout(timeoutFunction, 500);
           }
         }
       });
@@ -71,7 +71,7 @@ $( document ).ready(function() {
       socket.on("isTyping", function(data) {
         if (data.isTyping) {
           $("#updates").append("<li id=\""+data.nick+"\">"+data.nick+" esta escribiendo</li>");
-          timeout = setTimeout(timeoutFunction, 5000);
+          timeout = setTimeout(timeoutFunction, 500);
         } else {
           $("#"+data.nick+"").remove();
         }
